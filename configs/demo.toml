@@ -1,0 +1,97 @@
+[simulation]
+tick_ms = 20
+supply_voltage = 13.5
+
+[can]
+backend = "virtual"
+channel = "bcm-demo"
+bitrate = 500000
+command_timeout_ms = 500
+
+[[inputs]]
+id = "DP-01"
+name = "IN_DOOR"
+kind = "switch"
+values = ["CLOSED", "OPEN"]
+
+[[inputs]]
+id = "DP-02"
+name = "IN_LIGHT_SW"
+kind = "switch"
+values = ["OFF", "ON"]
+
+[[inputs]]
+id = "DP-03"
+name = "IN_IGNITION"
+kind = "switch"
+values = ["OFF", "ON"]
+
+[[inputs]]
+id = "DP-04"
+name = "IN_MOTOR_EN"
+kind = "switch"
+values = ["OFF", "ON"]
+
+[[inputs]]
+id = "DP-05"
+name = "IN_WIPER_MODE"
+kind = "enumerated"
+values = ["OFF", "INT", "LOW", "HIGH"]
+
+[[inputs]]
+id = "DP-06"
+name = "IN_WIPER_PARK"
+kind = "switch"
+values = ["NOT_PARKED", "PARKED"]
+
+[[inputs]]
+id = "DP-07"
+name = "AIN_DIMMER"
+kind = "analog"
+unit = "%"
+minimum = 0.0
+maximum = 100.0
+
+[[inputs]]
+id = "DP-08"
+name = "AIN_TEMP"
+kind = "analog"
+unit = "degC"
+minimum = -40.0
+maximum = 125.0
+
+[[inputs]]
+id = "DP-09"
+name = "AIN_RAIN"
+kind = "analog"
+unit = "%"
+minimum = 0.0
+maximum = 100.0
+
+[[outputs]]
+id = "DP-10"
+name = "OUT_LAMP"
+driver = "HSD"
+load = "interior_lamp"
+pwm = true
+
+[[outputs]]
+id = "DP-11"
+name = "OUT_WIPER_LOW"
+driver = "HSD"
+load = "wiper_low"
+pwm = false
+
+[[outputs]]
+id = "DP-12"
+name = "OUT_WIPER_HIGH"
+driver = "HSD"
+load = "wiper_high"
+pwm = false
+
+[[outputs]]
+id = "DP-13"
+name = "OUT_MOTOR"
+driver = "LSD"
+load = "motor"
+pwm = true
